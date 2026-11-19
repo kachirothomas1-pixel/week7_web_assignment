@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpendWise helps you plan a budget and keep track of your expenses.">
+  <title>SpendWise | Personal Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="SpendWise home"><span class="brand-mark">S</span> SpendWise</a>
+    <span class="header-note">Your money, made clearer.</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div><p class="eyebrow">PERSONAL FINANCE DASHBOARD</p><h1>Know where your money goes.</h1><p class="subheading">Set a budget, record expenses, and stay in control.</p></div>
+      <div class="date-chip" id="today-label">Your budget overview</div>
+    </section>
+
+    <section class="budget-panel panel" aria-labelledby="budget-heading">
+      <div class="section-heading"><div><p class="eyebrow">START HERE</p><h2 id="budget-heading">Monthly budget</h2></div><span class="small-tag">KES</span></div>
+      <form id="budget-form" class="budget-form">
+        <label for="budget-input">Set your spending limit (KES)</label>
+        <div class="inline-form"><input id="budget-input" type="number" min="1" step="0.01" placeholder="e.g. 30000" required><button class="button button-primary" type="submit">Save budget</button></div>
+      </form>
+      <p id="budget-feedback" class="feedback" aria-live="polite">Enter your monthly budget to get started.</p>
+    </section>
+
+    <section class="summary-grid" aria-label="Budget summary">
+      <article class="summary-card"><span class="summary-label">Monthly budget</span><strong id="budget-total">KES 0.00</strong><span class="summary-foot">Your spending limit</span></article>
+      <article class="summary-card"><span class="summary-label">Total expenses</span><strong id="spent-total">KES 0.00</strong><span class="summary-foot">All recorded expenses</span></article>
+      <article class="summary-card"><span class="summary-label">Money remaining</span><strong id="remaining-total">KES 0.00</strong><span class="summary-foot">Budget minus expenses</span></article>
+    </section>
+
+    <section class="progress-panel panel">
+      <div class="progress-top"><div><p class="eyebrow">BUDGET HEALTH</p><h2>Spending progress</h2></div><strong id="progress-percent">0%</strong></div>
+      <div class="progress-track" role="progressbar" aria-label="Budget used" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      <p id="budget-status" class="status-message" aria-live="polite">Add a budget and expenses to see your progress.</p>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel expense-panel" aria-labelledby="add-heading">
+        <div class="section-heading"><div><p class="eyebrow">RECORD A PAYMENT</p><h2 id="add-heading">Add an expense</h2></div><span class="plus-icon">+</span></div>
+        <form id="expense-form" class="expense-form">
+          <div class="field"><label for="expense-name">Expense name</label><input id="expense-name" type="text" maxlength="60" placeholder="e.g. Groceries" required></div>
+          <div class="field-row">
+            <div class="field"><label for="expense-amount">Amount (KES)</label><input id="expense-amount" type="number" min="0.01" step="0.01" placeholder="0.00" required></div>
+            <div class="field"><label for="expense-category">Category</label><select id="expense-category" required><option value="">Choose category</option><option>Food</option><option>Transport</option><option>Bills</option><option>Shopping</option><option>Education</option><option>Health</option><option>Other</option></select></div>
+          </div>
+          <div class="field"><label for="expense-date">Date</label><input id="expense-date" type="date" required></div>
+          <button class="button button-primary button-full" type="submit">Add expense</button>
+          <p id="expense-feedback" class="feedback" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel records-panel" aria-labelledby="records-heading">
+        <div class="section-heading records-heading"><div><p class="eyebrow">YOUR ACTIVITY</p><h2 id="records-heading">Recent expenses</h2></div><span id="expense-count" class="count-pill">0 records</span></div>
+        <div class="filter-row"><label class="visually-hidden" for="category-filter">Filter expenses by category</label><select id="category-filter"><option value="All">All categories</option><option>Food</option><option>Transport</option><option>Bills</option><option>Shopping</option><option>Education</option><option>Health</option><option>Other</option></select><button id="clear-filter" class="text-button" type="button">Clear filter</button></div>
+        <div id="expense-list" class="expense-list" aria-live="polite"><div class="empty-state"><span class="empty-icon">＋</span><strong>No expenses yet</strong><p>Your added expenses will appear here.</p></div></div>
+      </section>
+    </div>
+    <p class="page-note">SpendWise keeps your records in this browser using local storage.</p>
+  </main>
+  <footer><p>SpendWise · Simple budgeting for everyday life</p></footer>
+</body>
+</html>
